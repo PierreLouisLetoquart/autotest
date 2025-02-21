@@ -2,7 +2,6 @@
 
 import * as React from "react";
 
-import { CodeEditor } from "@/components/code-editor";
 import { defaultSourceCode } from "@/lib/utils";
 import { GenerationPanel } from "@/components/generation-panel";
 import {
@@ -10,20 +9,17 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { CodePanel } from "@/components/code-panel";
 
 export default function Home() {
-  const [sourceCode, setSourceCode] = React.useState<string>(defaultSourceCode);
-
   return (
     <ResizablePanelGroup direction="horizontal" className="h-full w-full">
       <ResizablePanel defaultSize={60}>
-        <div className="relative h-full">
-          <CodeEditor value={sourceCode} setValueAction={setSourceCode} />
-        </div>
+        <CodePanel />
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={40} maxSize={55}>
-        <GenerationPanel code={sourceCode} />
+        <GenerationPanel code={defaultSourceCode} />
       </ResizablePanel>
     </ResizablePanelGroup>
   );

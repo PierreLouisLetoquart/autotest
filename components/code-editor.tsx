@@ -21,7 +21,7 @@ export function CodeEditor({ value, setValueAction }: CodeEditorProps) {
 
   return (
     <CodeMirror
-      className="absolute inset-0"
+      className="absolute inset-0 text-base"
       value={value}
       extensions={[java()]}
       theme={resolvedTheme === "dark" ? githubDark : githubLight}
