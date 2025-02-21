@@ -15,7 +15,7 @@ export default function UserHelper() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size={"icon"}>
+        <Button disabled variant="ghost" size={"icon"}>
           <CircleHelpIcon />
         </Button>
       </DialogTrigger>
