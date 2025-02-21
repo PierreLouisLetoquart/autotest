@@ -11,7 +11,7 @@ export interface GenerationPanelProps {
   code: string;
 }
 
-export function GenerationPanel({ code }: GenerationPanelProps) {
+export function GenerationPanel() {
   return (
     <div className="absolute inset-0 flex flex-col">
       <ScrollArea className="flex-grow">

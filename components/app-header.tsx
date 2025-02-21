@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "./mode-toggle";
 import ModelStatusBadge from "./model-status-badge";
 import UserHelper from "./user-helper";
