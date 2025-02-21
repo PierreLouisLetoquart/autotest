@@ -13,19 +13,18 @@ export interface GenerationPanelProps {
 
 export function GenerationPanel({ code }: GenerationPanelProps) {
   return (
-    <div className="h-full flex flex-col">
+    <div className="absolute inset-0 flex flex-col">
       <ScrollArea className="flex-grow">
-        <div className="h-full overflow-y-auto p-4 md:p-6">
-          <div className="max-w-lg mx-auto space-y-6 py-8">
-            <h2 className="text-lg font-semibold tracking-tight">
-              Generation Panel
-            </h2>
-            <SelectTests />
-            <PromptTeaxtarea />
-            <ModelTemperatureSlider />
-            <Separator />
-            {/* <GenerationOutput /> */}
-          </div>
+        <div className="max-w-lg mx-auto space-y-6 py-8 p-4 md:p-6">
+          <h2 className="text-lg font-semibold tracking-tight">
+            Generation Panel
+          </h2>
+          <SelectTests />
+          <PromptTeaxtarea />
+          <ModelTemperatureSlider />
+          <Separator />
+          <h2 className="text-lg font-semibold tracking-tight">Output</h2>
+          <GenerationOutput />
         </div>
       </ScrollArea>
 

@@ -19,7 +19,9 @@ export default function Home() {
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={40} maxSize={55}>
-        <GenerationPanel code={defaultSourceCode} />
+        <div className="relative h-full">
+          <GenerationPanel code={defaultSourceCode} />
+        </div>
       </ResizablePanel>
     </ResizablePanelGroup>
   );
