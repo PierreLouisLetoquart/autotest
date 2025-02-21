@@ -2,7 +2,6 @@
 
 import * as React from "react";
 
-import { defaultSourceCode } from "@/lib/utils";
 import { GenerationPanel } from "@/components/generation-panel";
 import {
   ResizableHandle,
