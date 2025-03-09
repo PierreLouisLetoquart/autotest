@@ -11,7 +11,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const apiUrl = "http://127.0.0.1:5000/rest-assured-test";
+    const apiUrl = `${process.env.BACKEND_BASE_URL}/rest-assured-test`;
 
     const response = await fetch(apiUrl, {
       method: "POST",

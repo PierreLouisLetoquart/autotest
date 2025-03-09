@@ -45,7 +45,7 @@ export function CodePanel({
                     Your generated test will appear here
                   </p>
                 ) : (
-                  <p className="text-sm font-light text-muted-foreground text-green-400">
+                  <p className="text-sm font-light text-green-400">
                     Generating test...
                   </p>
                 )}

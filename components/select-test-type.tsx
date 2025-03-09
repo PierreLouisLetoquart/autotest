@@ -22,7 +22,9 @@ export default function SelectTests({ setSelectedTest }: SelectTestsProps) {
           Please select a test type
         </option>
         <option value="restassured">REST-asssured</option>
-        <option value="unit">Unit test</option>
+        <option value="unit" disabled>
+          Unit test
+        </option>
         <option value="e2e" disabled>
           End to End (E2E) test
         </option>

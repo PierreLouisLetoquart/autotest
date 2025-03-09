@@ -43,7 +43,7 @@ export function GenerationPanel({
         <div className="w-full h-full flex items-center justify-between px-4 md:px-6">
           <GenerationStatusBadge />
           <StartButton
-            onClick={() =>
+            sendRequest={() =>
               sendRequest({
                 testType: selectedTest,
                 prompt,
