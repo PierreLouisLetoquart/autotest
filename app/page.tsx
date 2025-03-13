@@ -16,8 +16,6 @@ export default function Home() {
   const [outputCode, setOutputCode] = React.useState<string>("");
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  React.useEffect(() => {}, [outputCode]);
-
   return (
     <ResizablePanelGroup
       direction="horizontal"
