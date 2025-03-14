@@ -47,3 +47,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   It will listen on [http://127.0.0.1:5000](http://127.0.0.1:5000)
 - In the root of your project create a `.env` file and add this variable 
 `BACKEND_BASE_URL=http://127.0.0.1:5000`
+
+## Set up MongoDB 
+- Add the `MONGODB_URL` variable in `.env` file 

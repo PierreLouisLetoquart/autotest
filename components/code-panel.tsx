@@ -7,6 +7,8 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { CodeEditor } from "@/components/code-editor";
+import StartButton from "./generation-start-button";
+import { sendToDB } from "@/hooks/sendToDB";
 
 interface CodePanelProps {
   sourceCode: string;
@@ -14,15 +16,20 @@ interface CodePanelProps {
   outputCode: string;
   setOutputCode: (outputCode: string) => void;
   isLoading: boolean;
+  selectedTest: string;
 }
 
 export function CodePanel({
+  selectedTest,
   sourceCode,
   setSourceCode,
   outputCode,
   setOutputCode,
   isLoading,
 }: CodePanelProps) {
+  const [isLoadingSendToDB, setIsLoadingSendToDB] =
+    React.useState<boolean>(false);
+
   return (
     <ResizablePanelGroup direction="vertical" className="w-full h-full">
       <ResizablePanel defaultSize={70}>
@@ -35,7 +42,20 @@ export function CodePanel({
         <div className="relative w-full h-full">
           <CodeEditor value={outputCode} setValueAction={setOutputCode} />
           {outputCode ? (
-            <div />
+            <div className="butto-container z-[100] absolute right-[1.5rem] top-[1rem]">
+              <StartButton
+                className="hover:bg-green-500"
+                action={() =>
+                  sendToDB({
+                    testType: selectedTest,
+                    prompt: sourceCode,
+                    testCaseGenerated: outputCode,
+                    setIsLoading: setIsLoadingSendToDB,
+                  })
+                }
+                buttonText="Send to DB"
+              />
+            </div>
           ) : (
             <div className="absolute inset-0 z-20 grid place-items-center bg-muted">
               <div className="flex flex-col items-center gap-3">

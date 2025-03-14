@@ -12,17 +12,19 @@ import { sendRequest } from "@/hooks/sendrequest";
 
 export interface GenerationPanelProps {
   prompt: string;
+  selectedTest: string;
+  setSelectedTest: (selectedTest: string) => void;
   setOuputCode: (outputCode: string) => void;
   setIsLoading: (isLoading: boolean) => void;
 }
 
 export function GenerationPanel({
   prompt,
+  selectedTest,
+  setSelectedTest,
   setIsLoading,
   setOuputCode,
 }: GenerationPanelProps) {
-  const [selectedTest, setSelectedTest] = React.useState("restassured");
-
   return (
     <div className="absolute inset-0 flex flex-col">
       <ScrollArea className="flex-grow">
@@ -43,7 +45,7 @@ export function GenerationPanel({
         <div className="w-full h-full flex items-center justify-between px-4 md:px-6">
           <GenerationStatusBadge />
           <StartButton
-            sendRequest={() =>
+            action={() =>
               sendRequest({
                 testType: selectedTest,
                 prompt,
@@ -51,6 +53,7 @@ export function GenerationPanel({
                 setOuputCode,
               })
             }
+            buttonText="Generate"
           />
         </div>
       </div>

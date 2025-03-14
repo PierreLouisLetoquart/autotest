@@ -15,8 +15,7 @@ export default function Home() {
   const [sourceCode, setSourceCode] = React.useState<string>(defaultSourceCode);
   const [outputCode, setOutputCode] = React.useState<string>("");
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
-  React.useEffect(() => {}, [outputCode]);
+  const [selectedTest, setSelectedTest] = React.useState("restassured");
 
   return (
     <ResizablePanelGroup
@@ -26,6 +25,7 @@ export default function Home() {
     >
       <ResizablePanel defaultSize={60}>
         <CodePanel
+          selectedTest={selectedTest}
           sourceCode={sourceCode}
           setSourceCode={setSourceCode}
           outputCode={outputCode}
@@ -37,6 +37,8 @@ export default function Home() {
       <ResizablePanel defaultSize={40} maxSize={55}>
         <div className="relative h-full">
           <GenerationPanel
+            selectedTest={selectedTest}
+            setSelectedTest={setSelectedTest}
             prompt={sourceCode}
             setOuputCode={setOutputCode}
             setIsLoading={setIsLoading}

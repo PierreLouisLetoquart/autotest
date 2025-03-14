@@ -2,12 +2,18 @@ import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
 
 interface StartButtonProps {
-  sendRequest: () => void;
+  action: () => void;
+  buttonText: string;
+  className?: string;
 }
-export default function StartButton({ sendRequest }: StartButtonProps) {
+export default function StartButton({
+  action,
+  buttonText,
+  className,
+}: StartButtonProps) {
   return (
-    <Button className="group" onClick={sendRequest}>
-      Generate
+    <Button className={`group ` + className} onClick={action}>
+      {buttonText}
       <ArrowRightIcon
         className="-me-1 opacity-60 transition-transform group-hover:translate-x-0.5"
         size={16}
