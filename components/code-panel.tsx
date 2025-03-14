@@ -7,12 +7,22 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { CodeEditor } from "@/components/code-editor";
-import { defaultSourceCode } from "@/lib/utils";
 
-export function CodePanel() {
-  const [sourceCode, setSourceCode] = React.useState<string>(defaultSourceCode);
-  const [outputCode, setOutputCode] = React.useState<string>("");
+interface CodePanelProps {
+  sourceCode: string;
+  setSourceCode: (sourceCode: string) => void;
+  outputCode: string;
+  setOutputCode: (outputCode: string) => void;
+  isLoading: boolean;
+}
 
+export function CodePanel({
+  sourceCode,
+  setSourceCode,
+  outputCode,
+  setOutputCode,
+  isLoading,
+}: CodePanelProps) {
   return (
     <ResizablePanelGroup direction="vertical" className="w-full h-full">
       <ResizablePanel defaultSize={70}>
@@ -30,9 +40,15 @@ export function CodePanel() {
             <div className="absolute inset-0 z-20 grid place-items-center bg-muted">
               <div className="flex flex-col items-center gap-3">
                 <p className="text-lg font-semibold tracking-tight">Tests 🧪</p>
-                <p className="text-sm font-light text-muted-foreground">
-                  Your generated test will appear here
-                </p>
+                {!isLoading ? (
+                  <p className="text-sm font-light text-muted-foreground">
+                    Your generated test will appear here
+                  </p>
+                ) : (
+                  <p className="text-sm font-light text-green-400">
+                    Generating test...
+                  </p>
+                )}
               </div>
             </div>
           )}
