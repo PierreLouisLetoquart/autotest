@@ -1,0 +1,8 @@
+---
+description: This rule is helpfull to understand the project narative
+globs: 
+alwaysApply: false
+---
+## Project Context
+
+Autotest is an advanced AI-powered test automation platform that streamlines development workflows through intelligent unit test generation. With its intuitive web interface, developers can simply input code to receive comprehensive test suites instantly, eliminating manual test writing overhead. The platform offers robust code analysis tools that identify vulnerabilities, edge cases, and performance issues, while built-in security validation ensures code reliability before deployment. Leveraging cutting-edge AI models, Autotest delivers tailored test coverage, optimizes development cycles, and enhances overall code quality—making it an essential tool for teams seeking to build robust, reliable, and secure software solutions efficiently.

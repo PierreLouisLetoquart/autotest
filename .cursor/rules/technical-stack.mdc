@@ -1,0 +1,13 @@
+---
+description: This rule is helpfull to understand technologies used in that project
+globs: 
+alwaysApply: false
+---
+## Technical Stack
+
+- **Frontend Framework**: Next.js with React 19
+- **UI Library**: shadcn/ui with Tailwind CSS V4
+- **Programming Language**: TypeScript 5.0+
+- **State Management**: Zustand (Can use `useState` etc... BUT: No other state management lib!)
+- **Form Handling**: React Hook Form with Zod validation (Form component in `/app/components/ui/form.tsx`)
+- **API**: REST endpoints with Next.js API `Route Handlers` (Do not use Next.js `actions`)
