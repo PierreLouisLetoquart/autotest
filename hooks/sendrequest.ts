@@ -1,3 +1,5 @@
+import { exctractTestCaseCode } from "@/lib/utils";
+
 enum TestType {
   RestAssured = "restassured",
   Unit = "unit",
@@ -48,6 +50,7 @@ export const sendRequest = async ({
 
   const data = await response.json();
   //   console.log(data);
-  setOuputCode(data.generated_test);
+  const codeFilter = exctractTestCaseCode(data.generated_test);
+  setOuputCode(codeFilter[0]);
   setIsLoading(false);
 };

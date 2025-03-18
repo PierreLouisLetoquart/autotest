@@ -21,5 +21,7 @@ export const sendToDB = async ({
     testCase: testCaseGenerated,
   });
 
+  alert("Test case saved to database");
+
   setIsLoading(false);
 };
