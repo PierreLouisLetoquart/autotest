@@ -7,11 +7,12 @@ export async function POST(req: Request) {
     if (!body.api_code) {
       return NextResponse.json(
         { error: "Missing api_code parameter" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    const apiUrl = `${process.env.BACKEND_BASE_URL}/rest-assured-test`;
+    const baseUrl = process.env.BACKEND_BASE_URL || "http://localhost:5000";
+    const apiUrl = `${baseUrl}/rest-assured-test`;
 
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -25,7 +26,7 @@ export async function POST(req: Request) {
       const errorText = await response.text();
       return NextResponse.json(
         { error: `Server error: ${errorText}` },
-        { status: response.status }
+        { status: response.status },
       );
     }
 
@@ -35,7 +36,7 @@ export async function POST(req: Request) {
     console.error("Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

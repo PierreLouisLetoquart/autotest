@@ -1,52 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Autotest: Automated Test Generation
 
-## Getting Started
+Autotest simplifies automated test generation by leveraging AI models. Follow these three simple steps to set up and run the project.
 
-First, run the development server:
+## 1. Frontend Setup
+
+First, clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:PierreLouisLetoquart/autotest.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Navigate to the project folder and install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> **Note:** We use [pnpm](https://pnpm.io/) as the package manager. Install it [here](https://pnpm.io/installation) if you haven't already.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm i
+```
 
-## Learn More
+Run the development server:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 2. LLM Model Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Autotest relies on an AI model for generating tests. We recommend using `DeepSeek-r1:7b` with [Ollama](https://ollama.com/).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Install Ollama** (if not installed): Follow the instructions [here](https://ollama.com).
+2. **Download the model**:
 
+   ```bash
+   ollama pull deepseek-r1:7b
+   ```
 
-## Set up and run the backend locally
-##### First, install the required packages:
-- `pip install -r requirements.txt`
+Ollama will handle model execution locally, ensuring fast and private processing.
 
-#### Next step :
-- Make sure you've installed ``deepseek-r1:7b`` model on your local machine with ``ollama``.
-- open a new cmd or terminal window, navigate to the `backend` folder.
-- Run `python server.py` to start the backend server.
-  It will listen on [http://127.0.0.1:5000](http://127.0.0.1:5000)
-- In the root of your project create a `.env` file and add this variable 
-`BACKEND_BASE_URL=http://127.0.0.1:5000`
+---
 
-## Set up MongoDB 
-- Add the `MONGODB_URL` variable in `.env` file 
+## 3. Backend Setup
+
+First, navigate to the backend folder:
+
+```bash
+cd backend
+```
+
+Set up a virtual environment and activate it:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the backend server:
+
+```bash
+python server.py
+```
+
+The server will start on [http://localhost:5000](http://localhost:5000).
+
+To customize the backend URL, set the `BACKEND_BASE_URL` environment variable:
+
+```bash
+export BACKEND_BASE_URL=http://localhost:6969
+python server.py
+```
+
+Or update the `.env` file:
+
+```env
+BACKEND_BASE_URL=http://localhost:6969
+```
+
+Now you're all set! 🚀
