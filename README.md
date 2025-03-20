@@ -97,12 +97,15 @@ Or update the `.env` file:
 ```env
 BACKEND_BASE_URL=http://localhost:6969
 ```
-# 4.Backend Mistral 
+
+## 4.Backend Mistral 
+
 First, navigate to the backend folder:
 
 ```bash
-cd Server_mistral
+cd backend
 ```
+
 Set up a virtual environment and activate it:
 
 ```bash
@@ -111,14 +114,19 @@ source .venv/bin/activate
 ```
 
 Install dependencies:
+
 ```bash
 pip install fastapi uvicorn httpx pydantic
 ```
- Add your Mistral API key in the server_mistral.py file to the MISTRAL_API_KEY variable
-# Start the server
+
+Add your Mistral API key in the `Server_mistral.py` file to the `MISTRAL_API_KEY` variable
+
+## Start the server
+
 ```bash
 uvicorn Server_mistral:app --reload
 ```
-The server will start on http://127.0.0.1:8000.
+
+The server will start on [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 Now you're all set! 🚀
