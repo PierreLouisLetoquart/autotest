@@ -53,8 +53,8 @@ Analyze a Java Spring Boot API code and generate RestAssured tests using Google'
 2. **Copier la clé API** : Once the key is generated, you can copy it. This key is your identifier to interact with the Gemini API.
    Keep the key secure: **Do not share this key and keep it in a safe place**
 3. **Add your key in the gemini.py file** :
-   **a**: You can manually add your API key to the code [api_key = 'YOUR_API_KEY']
-   **b**: Use environment variables (more secure): For better security, it is recommended to add the API key to your environment variables instead of hardcoding it into the code.
+   - **a**: You can manually add your API key to the code [api_key = 'YOUR_API_KEY']
+   - **b**: Use environment variables (more secure): For better security, it is recommended to add the API key to your environment variables instead of hardcoding it into the code.
 
 ## 3. Backend Setup
 
