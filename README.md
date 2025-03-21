@@ -28,7 +28,9 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 2. LLM Model Setup
+## 2. LLM Model Setup:
+
+## 2.1 Case 1: DeepSeek
 
 Autotest relies on an AI model for generating tests. We recommend using `DeepSeek-r1:7b` with [Ollama](https://ollama.com/).
 
@@ -42,6 +44,17 @@ Autotest relies on an AI model for generating tests. We recommend using `DeepSee
 Ollama will handle model execution locally, ensuring fast and private processing.
 
 ---
+
+## 2.2 Case 2: Gemini
+
+Analyze a Java Spring Boot API code and generate RestAssured tests using Google's Gemini model via LangChain.
+
+1. **Obtain your gemini key** : Follow the instructions [here](https://ai.google.dev/gemini-api/docs/api-key?hl=fr).
+2. **Copier la clé API** : Once the key is generated, you can copy it. This key is your identifier to interact with the Gemini API.
+   Keep the key secure: **Do not share this key and keep it in a safe place**
+3. **Add your key in the gemini.py file** :
+   - **a**: You can manually add your API key to the code [api_key = 'YOUR_API_KEY']
+   - **b**: Use environment variables (more secure): For better security, it is recommended to add the API key to your environment variables instead of hardcoding it into the code.
 
 ## 3. Backend Setup
 
@@ -84,5 +97,36 @@ Or update the `.env` file:
 ```env
 BACKEND_BASE_URL=http://localhost:6969
 ```
+
+## 4.Backend Mistral 
+
+First, navigate to the backend folder:
+
+```bash
+cd backend
+```
+
+Set up a virtual environment and activate it:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install fastapi uvicorn httpx pydantic
+```
+
+Add your Mistral API key in the `Server_mistral.py` file to the `MISTRAL_API_KEY` variable
+
+## Start the server
+
+```bash
+uvicorn Server_mistral:app --reload
+```
+
+The server will start on [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 Now you're all set! 🚀
