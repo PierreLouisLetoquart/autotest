@@ -1,3 +1,5 @@
+import { exctractTestCaseCode } from "@/lib/utils";
+
 enum TestType {
   RestAssured = "restassured",
   Unit = "unit",
@@ -41,12 +43,14 @@ export const sendRequest = async ({
     }),
   });
 
-  if (!response.ok) {
+  if (response.status !== 200) {
+    setIsLoading(false);
     throw new Error(`Request failed with status ${response.status}`);
   }
 
   const data = await response.json();
   //   console.log(data);
-  setOuputCode(data.generated_test);
+  const codeFilter = exctractTestCaseCode(data.generated_test);
+  setOuputCode(codeFilter[0]);
   setIsLoading(false);
 };

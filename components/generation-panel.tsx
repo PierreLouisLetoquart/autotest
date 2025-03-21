@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Separator } from "./ui/separator";
-import StartButton from "./generation-start-button";
+import { StartButton } from "@/components/generation-start-button";
 import GenerationStatusBadge from "./generation-status-badge";
 import PromptTeaxtarea from "./prompt-textarea";
 import SelectTests from "./select-test-type";
@@ -12,17 +12,19 @@ import { sendRequest } from "@/hooks/sendrequest";
 
 export interface GenerationPanelProps {
   prompt: string;
+  selectedTest: string;
+  setSelectedTest: (selectedTest: string) => void;
   setOuputCode: (outputCode: string) => void;
   setIsLoading: (isLoading: boolean) => void;
 }
 
 export function GenerationPanel({
   prompt,
+  selectedTest,
+  setSelectedTest,
   setIsLoading,
   setOuputCode,
 }: GenerationPanelProps) {
-  const [selectedTest, setSelectedTest] = React.useState("restassured");
-
   return (
     <div className="absolute inset-0 flex flex-col">
       <ScrollArea className="flex-grow">
@@ -43,7 +45,7 @@ export function GenerationPanel({
         <div className="w-full h-full flex items-center justify-between px-4 md:px-6">
           <GenerationStatusBadge />
           <StartButton
-            sendRequest={() =>
+            action={() =>
               sendRequest({
                 testType: selectedTest,
                 prompt,
@@ -51,6 +53,7 @@ export function GenerationPanel({
                 setOuputCode,
               })
             }
+            buttonText="Generate"
           />
         </div>
       </div>

@@ -12,3 +12,16 @@ export const defaultSourceCode = `public class Main {
     System.out.println("Hello World");
   }
 }`;
+
+// This function extracts the java code from the generated test case
+export function exctractTestCaseCode(texte: string): string[] {
+  const regex = /```java\s*([\s\S]*?)```/g;
+  const matches = [];
+  let match;
+
+  while ((match = regex.exec(texte)) !== null) {
+    matches.push(match[1].trim());
+  }
+
+  return matches;
+}

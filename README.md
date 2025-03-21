@@ -127,6 +127,14 @@ Add your Mistral API key in the `Server_mistral.py` file to the `MISTRAL_API_KEY
 uvicorn Server_mistral:app --reload
 ```
 
+## 5.Backend MongoDB
+
+First, make sure to pupdate you .env with the connexion to mongo instance :
+
+```bash
+MONGODB_URL=yourmongourl
+```
+
 The server will start on [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 Now you're all set! 🚀
