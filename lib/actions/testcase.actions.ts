@@ -22,7 +22,7 @@ export async function createTestCase({
       testCase,
     });
     return { success: true };
-  } catch (error: any) {
-    throw new Error(`Failed to create test case: ${error.message}`);
+  } catch (error: unknown) {
+    throw new Error(`Failed to create test case: ${error}`);
   }
 }

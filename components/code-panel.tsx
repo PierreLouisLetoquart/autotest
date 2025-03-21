@@ -7,9 +7,8 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { CodeEditor } from "@/components/code-editor";
-import StartButton from "./generation-start-button";
+import { StartButton } from "@/components/generation-start-button";
 import { sendToDB } from "@/hooks/sendToDB";
-
 interface CodePanelProps {
   sourceCode: string;
   setSourceCode: (sourceCode: string) => void;
@@ -27,8 +26,7 @@ export function CodePanel({
   setOutputCode,
   isLoading,
 }: CodePanelProps) {
-  const [isLoadingSendToDB, setIsLoadingSendToDB] =
-    React.useState<boolean>(false);
+  const [, setIsLoadingSendToDB] = React.useState<boolean>(false);
 
   return (
     <ResizablePanelGroup direction="vertical" className="w-full h-full">
