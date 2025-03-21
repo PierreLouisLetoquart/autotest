@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Separator } from "./ui/separator";
-import StartButton from "./generation-start-button";
+import { StartButton } from "@/components/generation-start-button";
 import GenerationStatusBadge from "./generation-status-badge";
 import PromptTeaxtarea from "./prompt-textarea";
 import SelectTests from "./select-test-type";
