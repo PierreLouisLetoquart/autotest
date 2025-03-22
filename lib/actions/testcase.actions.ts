@@ -1,7 +1,7 @@
 "use server";
 
 import { connectToDB } from "../mongoose";
-import TestCase from "../models/testcase.model";
+import TestCase from "@/lib/models/testcase.model";
 
 interface Params {
   testType: string;
