@@ -9,6 +9,7 @@ enum TestType {
 interface SendRequestProps {
   testType: string;
   prompt: string;
+  outputCode: string;
   setIsLoading: (isLoading: boolean) => void;
   setOuputCode: (outputCode: string) => void;
 }
@@ -16,6 +17,7 @@ interface SendRequestProps {
 export const sendRequest = async ({
   testType,
   prompt,
+  outputCode,
   setIsLoading,
   setOuputCode,
 }: SendRequestProps) => {
@@ -23,6 +25,10 @@ export const sendRequest = async ({
   const isValidTestType = Object.values(TestType).includes(
     testType as TestType
   );
+
+  if (outputCode !== "") {
+    setOuputCode("");
+  }
 
   if (!isValidTestType) {
     throw new Error(

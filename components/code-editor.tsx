@@ -16,10 +16,9 @@ export function CodeEditor({ value, setValueAction }: CodeEditorProps) {
   const onChange = React.useCallback(
     // @ts-expect-error - This is a hack to get around the fact that the CodeMirror
     (val) => {
-      console.log("val:", val);
       setValueAction(val);
     },
-    [setValueAction],
+    [setValueAction]
   );
 
   return (

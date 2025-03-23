@@ -13,6 +13,8 @@ import { sendRequest } from "@/hooks/sendrequest";
 export interface GenerationPanelProps {
   prompt: string;
   selectedTest: string;
+  outputCode: string;
+  isLoading: boolean;
   setSelectedTest: (selectedTest: string) => void;
   setOuputCode: (outputCode: string) => void;
   setIsLoading: (isLoading: boolean) => void;
@@ -21,6 +23,8 @@ export interface GenerationPanelProps {
 export function GenerationPanel({
   prompt,
   selectedTest,
+  outputCode,
+  isLoading,
   setSelectedTest,
   setIsLoading,
   setOuputCode,
@@ -43,17 +47,22 @@ export function GenerationPanel({
 
       <div className="w-full h-16 border-t border-border flex-shrink-0">
         <div className="w-full h-full flex items-center justify-between px-4 md:px-6">
-          <GenerationStatusBadge />
+          <GenerationStatusBadge
+            isLoading={isLoading}
+            outputCode={outputCode}
+          />
           <StartButton
+            buttonText="Generate"
+            isLoading={isLoading}
             action={() =>
               sendRequest({
                 testType: selectedTest,
                 prompt,
+                outputCode,
                 setIsLoading,
                 setOuputCode,
               })
             }
-            buttonText="Generate"
           />
         </div>
       </div>

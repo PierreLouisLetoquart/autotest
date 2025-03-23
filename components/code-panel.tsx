@@ -42,7 +42,9 @@ export function CodePanel({
           {outputCode ? (
             <div className="butto-container z-[100] absolute right-[1.5rem] top-[1rem]">
               <StartButton
+                buttonText="Send to DB"
                 className="hover:bg-green-500"
+                isLoading={isLoading}
                 action={() =>
                   sendToDB({
                     testType: selectedTest,
@@ -51,7 +53,6 @@ export function CodePanel({
                     setIsLoading: setIsLoadingSendToDB,
                   })
                 }
-                buttonText="Send to DB"
               />
             </div>
           ) : (

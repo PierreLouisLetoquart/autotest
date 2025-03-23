@@ -40,8 +40,10 @@ export default function Home() {
             selectedTest={selectedTest}
             setSelectedTest={setSelectedTest}
             prompt={sourceCode}
+            outputCode={outputCode}
             setOuputCode={setOutputCode}
             setIsLoading={setIsLoading}
+            isLoading={isLoading}
           />
         </div>
       </ResizablePanel>
