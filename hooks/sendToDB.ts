@@ -1,4 +1,5 @@
 import { createTestCase } from "@/lib/actions/testcase.actions";
+import { toast } from "sonner";
 
 interface sendToDbProps {
   testType: string;
@@ -15,13 +16,24 @@ export const sendToDB = async ({
 }: sendToDbProps) => {
   setIsLoading(true);
 
-  await createTestCase({
-    testType,
-    sourceCode: prompt,
-    testCase: testCaseGenerated,
-  });
+  const promise = () =>
+    new Promise(async (resolve) =>
+      resolve(
+        await createTestCase({
+          testType,
+          sourceCode: prompt,
+          testCase: testCaseGenerated,
+        })
+      )
+    );
 
-  alert("Test case saved to database");
+  toast.promise(promise, {
+    loading: "Loading...",
+    success: () => {
+      return `Test case saved to database`;
+    },
+    error: "Failed to save test case to database",
+  });
 
   setIsLoading(false);
 };

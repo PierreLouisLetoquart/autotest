@@ -7,7 +7,7 @@ export default function ModelStatusBadge() {
         className="size-1.5 rounded-full bg-green-500"
         aria-hidden="true"
       ></span>
-      Claude 3.5 Sonnet - Ready
+      DeepSeek-R1 - Ready
     </Badge>
   );
 }

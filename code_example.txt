@@ -1,0 +1,52 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class ApiCaller {
+
+    public static void main(String[] args) {
+        String apiUrl = "https://jsonplaceholder.typicode.com/todos/1"; // Replace with your API URL
+
+        try {
+            String response = callApi(apiUrl);
+            System.out.println("API Response:\n" + response);
+        } catch (IOException e) {
+            System.err.println("Error calling API: " + e.getMessage());
+        }
+    }
+
+    public static String callApi(String apiUrl) throws IOException {
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        try {
+            // Set request method (GET, POST, PUT, DELETE, etc.)
+            connection.setRequestMethod("GET");
+
+            // Set request headers (optional)
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
+
+            // Get the response code
+            int responseCode = connection.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+
+            // Read the response
+            StringBuilder response = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+            }
+
+            return response.toString();
+
+        } finally {
+            // Disconnect the connection
+            connection.disconnect();
+        }
+    }
+}

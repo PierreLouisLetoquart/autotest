@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
+import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -24,4 +25,17 @@ export function exctractTestCaseCode(texte: string): string[] {
   }
 
   return matches;
+}
+
+// This function copy the generated test case to the clipboard
+export async function copyToClipboard(text: string) {
+  try {
+    navigator.clipboard.writeText(text);
+    toast.success("Copied to the clipboard");
+  } catch (e) {
+    toast.error("Failed to copy to the clipboard", {
+      description: `Error: ${e}`,
+    });
+    throw new Error("Failed to copy to the clipboard :" + e);
+  }
 }

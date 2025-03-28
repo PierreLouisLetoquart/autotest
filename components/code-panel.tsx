@@ -9,6 +9,8 @@ import {
 import { CodeEditor } from "@/components/code-editor";
 import { StartButton } from "@/components/generation-start-button";
 import { sendToDB } from "@/hooks/sendToDB";
+import { ClipboardList } from "lucide-react";
+import { copyToClipboard } from "@/lib/utils";
 interface CodePanelProps {
   sourceCode: string;
   setSourceCode: (sourceCode: string) => void;
@@ -40,19 +42,28 @@ export function CodePanel({
         <div className="relative w-full h-full">
           <CodeEditor value={outputCode} setValueAction={setOutputCode} />
           {outputCode ? (
-            <div className="butto-container z-[100] absolute right-[1.5rem] top-[1rem]">
-              <StartButton
-                className="hover:bg-green-500"
-                action={() =>
-                  sendToDB({
-                    testType: selectedTest,
-                    prompt: sourceCode,
-                    testCaseGenerated: outputCode,
-                    setIsLoading: setIsLoadingSendToDB,
-                  })
-                }
-                buttonText="Send to DB"
-              />
+            <div className="z-[100] flex flex-nowrap gap-2 absolute right-[1.5rem] top-[1rem]">
+              <div className="button-container">
+                <StartButton
+                  icon={<ClipboardList size={16} />}
+                  action={() => copyToClipboard(outputCode)}
+                />
+              </div>
+              <div className="button-container">
+                <StartButton
+                  buttonText="Send to DB"
+                  className="hover:bg-green-500"
+                  isLoading={isLoading}
+                  action={() =>
+                    sendToDB({
+                      testType: selectedTest,
+                      prompt: sourceCode,
+                      testCaseGenerated: outputCode,
+                      setIsLoading: setIsLoadingSendToDB,
+                    })
+                  }
+                />
+              </div>
             </div>
           ) : (
             <div className="absolute inset-0 z-20 grid place-items-center bg-muted">
